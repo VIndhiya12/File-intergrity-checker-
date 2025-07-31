@@ -1,0 +1,15 @@
+import hashlib
+first_text = "this is my original file text"
+changed_text = "this is my changed file text"
+def make_hash(text):
+    return hashlib.sha256(text.encode()).hexdigest()
+hash1 = make_hash(first_text)
+hash2 = make_hash(changed_text)
+
+print("Original hash:", hash1)
+print("New hash:", hash2)
+
+if hash1 == hash2:
+    print("No change found")
+else:
+    print("File content changed")
