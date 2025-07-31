@@ -1,0 +1,14 @@
+import socket
+def scan_ports(target_ip):
+    print("Starting port scan on:", target_ip)
+    for port in range(20, 101):
+        try:
+            s = socket.socket()
+            s.settimeout(0.5)  
+            s.connect((target_ip, port))
+            print("Port", port, "is OPEN")
+            s.close()
+        except:
+            pass 
+target = "127.0.0.1"
+scan_ports(target)
